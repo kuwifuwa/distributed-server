@@ -6,7 +6,7 @@ param (
 $config = Import-PowerShellDataFile $(Join-Path $PSScriptRoot "config.psd1")
 
 Write-Host "Getting host lock file..."
-$hostLock = Get-HostLock $config.RemoteDir -rclonePath $config.rclonePath
+$hostLock = Get-HostLock $config.RemoteDir -RclonePath $config.RclonePath
 
 if ($hostLock) {
 	Write-Output $hostLock
@@ -16,5 +16,5 @@ if ($hostLock) {
 
 if ($Delete) {
 	Write-Host "Deleting host lock file..."
-	Remove-HostLock $config.RemoteDir -rclonePath $config.rclonePath
+	Remove-HostLock $config.RemoteDir -RclonePath $config.RclonePath
 }

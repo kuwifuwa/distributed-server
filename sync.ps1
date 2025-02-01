@@ -11,7 +11,7 @@ function Sync-Push {
 		[Parameter(Mandatory=$true)]
 		[String]$RemoteDir,
 		[String]$FilterPath = (Join-Path $PSScriptRoot "syncfilter.txt"),
-		[String]$rclonePath = "rclone",
+		[String]$RclonePath = "rclone",
 		[switch]$DryRun
 	)
 
@@ -33,7 +33,7 @@ function Sync-Push {
 	if ($DryRun) {
 		$syncArgs += "--dry-run"
 	}
-	& $rclonePath sync @syncArgs
+	& $RclonePath sync @syncArgs
 }
 
 function Sync-Pull {
@@ -43,7 +43,7 @@ function Sync-Pull {
 		[Parameter(Mandatory=$true)]
 		[String]$RemoteDir,
 		[String]$FilterPath = (Join-Path $PSScriptRoot "syncfilter.txt"),
-		[String]$rclonePath = "rclone",
+		[String]$RclonePath = "rclone",
 		[switch]$DryRun
 	)
 
@@ -52,18 +52,18 @@ function Sync-Pull {
 		$syncArgs += "--dry-run"
 	}
 	$syncFilterPath = [System.IO.Path]::Combine($RemoteDir, $FilterPath)
-	& $rclonePath cat $syncFilterPath | rclone sync @syncArgs
+	& $RclonePath cat $syncFilterPath | rclone sync @syncArgs
 }
 
 function Get-HostLock {
 	param (
 		[Parameter(Mandatory=$true)]
 		[String]$RemoteDir,
-		[String]$rclonePath = "rclone"
+		[String]$RclonePath = "rclone"
 	)
 
 	$hostLockPath = $RemoteDir.TrimEnd("/") + "/host.lock"
-	return & $rclonePath cat $hostLockPath
+	return & $RclonePath cat $hostLockPath
 }
 
 function Set-HostLock {
@@ -75,7 +75,7 @@ function Set-HostLock {
 		[Parameter(Mandatory=$true)]
 		[String]$HostAddress,
 		[switch]$DryRun,
-		[String]$rclonePath = "rclone"
+		[String]$RclonePath = "rclone"
 	)
 
 	$hostLockPath = $RemoteDir.TrimEnd("/") + "/host.lock"
@@ -83,7 +83,7 @@ function Set-HostLock {
 	if ($DryRun) {
 		$rcatArgs += "--dry-run"
 	}
-	$HostName, $HostAddress | & $rclonePath rcat @rcatArgs
+	$HostName, $HostAddress | & $RclonePath rcat @rcatArgs
 }
 
 function Remove-HostLock {
@@ -91,7 +91,7 @@ function Remove-HostLock {
 		[Parameter(Mandatory=$true)]
 		[String]$RemoteDir,
 		[switch]$DryRun,
-		[String]$rclonePath = "rclone"
+		[String]$RclonePath = "rclone"
 	)
 
 	$hostLockPath = $RemoteDir.TrimEnd("/") + "/host.lock"
@@ -99,5 +99,5 @@ function Remove-HostLock {
 	if ($DryRun) {
 		$deletefileArgs += "--dry-run"
 	}
-	& $rclonePath deletefile @deletefileArgs
+	& $RclonePath deletefile @deletefileArgs
 }
