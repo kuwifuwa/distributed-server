@@ -1,0 +1,10 @@
+# Applied to LocalDir for pushing and RemoteDir for pulling.
+
++ /distributed-server/syncfilter.txt
+- /distributed-server/**
+- /host.lock
+- /libraries/**
+- /logs/**
+- /versions/**
+- /eula.txt
+- /server.jar
