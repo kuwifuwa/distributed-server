@@ -1,6 +1,6 @@
 function Sync-Push {
 	param (
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory)]
 		[ValidateScript({
 			if (-not ($_ | Test-Path -PathType Container)) {
 				throw "Directory does not exist."
@@ -8,7 +8,7 @@ function Sync-Push {
 			return $true
 		})]
 		[String]$Dir,
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory)]
 		[String]$RemoteDir,
 		[String]$FilterPath = (Join-Path $PSScriptRoot "syncfilter.txt"),
 		[String]$RclonePath = "rclone",
@@ -28,9 +28,9 @@ function Sync-Push {
 
 function Sync-Pull {
 	param (
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory)]
 		[String]$Dir,
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory)]
 		[String]$RemoteDir,
 		[String]$FilterPath = (Join-Path $PSScriptRoot "syncfilter.txt"),
 		[String]$RclonePath = "rclone",
@@ -47,7 +47,7 @@ function Sync-Pull {
 
 function Get-HostLock {
 	param (
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory)]
 		[String]$RemoteDir,
 		[String]$RclonePath = "rclone"
 	)
@@ -58,11 +58,11 @@ function Get-HostLock {
 
 function Set-HostLock {
 	param (
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory)]
 		[String]$RemoteDir,
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory)]
 		[String]$HostName,
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory)]
 		[String]$HostAddress,
 		[switch]$DryRun,
 		[String]$RclonePath = "rclone"
@@ -78,7 +78,7 @@ function Set-HostLock {
 
 function Remove-HostLock {
 	param (
-		[Parameter(Mandatory=$true)]
+		[Parameter(Mandatory)]
 		[String]$RemoteDir,
 		[switch]$DryRun,
 		[String]$RclonePath = "rclone"
