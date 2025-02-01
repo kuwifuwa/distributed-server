@@ -1,4 +1,4 @@
-. (Join-Path $PSScriptRoot "lib/sync.ps1")
+. (Join-Path $PSScriptRoot "lib.ps1")
 $config = Import-PowerShellDataFile $(Join-Path $PSScriptRoot "config.psd1")
 
 $Dir = [System.IO.Path]::Combine($PSScriptRoot, $config.LocalDir)

@@ -2,7 +2,7 @@ param (
     [switch]$Delete
 )
 
-. (Join-Path $PSScriptRoot "lib/sync.ps1")
+. (Join-Path $PSScriptRoot "lib.ps1")
 $config = Import-PowerShellDataFile $(Join-Path $PSScriptRoot "config.psd1")
 
 Write-Host "Getting host lock file..."
