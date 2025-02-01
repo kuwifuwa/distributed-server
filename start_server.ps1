@@ -1,11 +1,11 @@
-. (Join-Path $PSScriptRoot "sync.ps1")
+. (Join-Path $PSScriptRoot "lib/sync.ps1")
 $config = Import-PowerShellDataFile $(Join-Path $PSScriptRoot "config.psd1")
 
 $Dir = [System.IO.Path]::Combine($PSScriptRoot, $config.LocalDir)
 
 if (Get-HostLock $config.RemoteDir -RclonePath $config.RclonePath) {
-	Write-Host "Host lock found in remote directory. Aborting startup."
-	return
+    Write-Host "Host lock found in remote directory. Aborting startup."
+    return
 }
 Write-Host "Creating host lock..."
 Set-HostLock $config.RemoteDir $config.HostName $config.HostAddress -RclonePath $config.RclonePath
