@@ -14,8 +14,7 @@ Write-Host "Pulling files..."
 Sync-Pull $Dir $config.RemoteDir -RclonePath $config.RclonePath
 
 Write-Host "Starting server..."
-$command = $config.StartServerCommand.Split(" ")
-& $command[0] $command[1..($command.Count - 1)]
+Invoke-Expression $config.StartServerCommand
 
 Write-Host "Pushing files..."
 Sync-Push $Dir $config.RemoteDir -RclonePath $config.RclonePath
