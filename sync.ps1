@@ -52,7 +52,7 @@ function Get-HostLock {
 		[String]$RclonePath = "rclone"
 	)
 
-	$hostLockPath = $RemoteDir.TrimEnd("/") + "/host.lock"
+	$hostLockPath = $RemoteDir.TrimEnd("/") + "/distributed-server/host.lock"
 	return & $RclonePath cat $hostLockPath
 }
 
@@ -68,7 +68,7 @@ function Set-HostLock {
 		[String]$RclonePath = "rclone"
 	)
 
-	$hostLockPath = $RemoteDir.TrimEnd("/") + "/host.lock"
+	$hostLockPath = $RemoteDir.TrimEnd("/") + "/distributed-server/host.lock"
 	$rcatArgs = @($hostLockPath, "--verbose")
 	if ($DryRun) {
 		$rcatArgs += "--dry-run"
@@ -84,7 +84,7 @@ function Remove-HostLock {
 		[String]$RclonePath = "rclone"
 	)
 
-	$hostLockPath = $RemoteDir.TrimEnd("/") + "/host.lock"
+	$hostLockPath = $RemoteDir.TrimEnd("/") + "/distributed-server/host.lock"
 	$deletefileArgs = @($hostLockPath, "--verbose")
 	if ($DryRun) {
 		$deletefileArgs += "--dry-run"
