@@ -32,7 +32,7 @@ function Sync-Pull {
         [String]$Dir,
         [Parameter(Mandatory)]
         [String]$RemoteDir,
-        [String]$FilterPath = (Join-Path $PSScriptRoot "syncfilter.txt"),
+        [String]$FilterPath = "distributed-server/syncfilter.txt",
         [String]$RclonePath = "rclone",
         [switch]$DryRun
     )
