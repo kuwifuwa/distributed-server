@@ -2,9 +2,9 @@
 
 + /distributed-server/syncfilter.txt
 - /distributed-server/**
-- /host.lock
-- /libraries/**
-- /logs/**
-- /versions/**
-- /eula.txt
-- /server.jar
+
+# PalServer Windows
++ /Pal/Saved/Config/WindowsServer/**
+- /Pal/Saved/SaveGames/*/*/backup/**
++ /Pal/Saved/SaveGames/**
+- /**

@@ -1,7 +1,7 @@
 @{
 	LocalDir = ".."
 	RemoteDir = "remote:shared_directory"
-	StartServerCommand = "java -Xms2G -Xmx2G -jar ./server.jar nogui"
+	StartServerCommand = "& `"`$(`$config.LocalDir)/Pal/Binaries/Win64/PalServer-Win64-Shipping-Cmd.exe`""
 	HostName = "default_host"
 	HostAddress = "default_address"
 	RclonePath = "rclone"
