@@ -15,16 +15,6 @@ function Sync-Push {
 		[switch]$DryRun
 	)
 
-
-	if (-not (Join-Path $Dir "world" | Test-Path -PathType Container)) {
-		$choices = @(
-			[System.Management.Automation.Host.ChoiceDescription]::new("&Yes", "Proceed with the operation.")
-			[System.Management.Automation.Host.ChoiceDescription]::new("&No", "Cancel the operation.")
-		)
-		$decision = $Host.UI.PromptForChoice("WARNING", "Directory '$((Resolve-Path $Dir).Path)' does not contain a 'world' folder. It is likely you have selected the wrong directory to push. Proceed?", $choices, 1)
-		if ($decision -eq 1) { return }
-	}
-
 	$syncArgs = @($Dir, $RemoteDir, "--verbose")
 	$syncFilterPath = [System.IO.Path]::Combine($Dir, $FilterPath)
 	if ($syncFilterPath | Test-Path -PathType Leaf) {
